@@ -84,6 +84,11 @@ h2{
       padding-left: 20px;
       margin-top: 10px;
     }
+    span{
+      display: inline-block;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
   }
 
   h3{

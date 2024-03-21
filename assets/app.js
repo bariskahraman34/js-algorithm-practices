@@ -21,6 +21,8 @@ for (const form of forms) {
             sumPairs();
         }else if(inputElement.name == "fs"){
             fibSeries();
+        }else if(inputElement.name == "es"){
+            findBiggestThreeNumbers();
         }
         e.target.reset();
     })
@@ -87,3 +89,34 @@ function fibSeries(){
     fsResultDiv.innerHTML += `<p>Fibonacci Serisi: ${fib.map(f => ` ${f} `)}</p>`;
 }
 
+// Dizide ki En Büyük 3 Sayıyı Bulma
+Array.prototype.sortSelectionArray = function(){
+    for(let i = 0 ; i < this.length; i++){
+        let indexOfMin = i;
+        for(let j = i + 1 ; j < this.length; j++){
+            if(this[j] < this[indexOfMin]){
+                indexOfMin = j;
+            }
+        }
+        let temp = this[i];
+        this[i] = this[indexOfMin];
+        this[indexOfMin] = temp;
+    }
+    return this;
+}
+
+function findBiggestThreeNumbers(){
+    const esResultDiv = document.querySelector('#es-result-div');
+    esResultDiv.innerHTML = "";
+    const esVal = document.querySelector('input[name="es"]').value;
+    let arr = esVal.split(',');
+    let trimmedArr = arr.map(s => parseInt(s.trim()));
+    if(trimmedArr.length < 3){
+        return esResultDiv.innerHTML = "<p>Lütfen 3 adetten daha fazla sayı giriniz."; 
+    }
+    trimmedArr = trimmedArr.sortSelectionArray();
+    esResultDiv.innerHTML = "<h3>Dizinin en büyük üç elemanı şunlardır: </h3>"
+    for(let i = 0 ; i < 3 ; i++){
+        esResultDiv.innerHTML += `<span>${trimmedArr.pop()}</span>`
+    }
+}
