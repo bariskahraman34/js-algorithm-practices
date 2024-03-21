@@ -11,14 +11,23 @@
     <h2>Javascript ile Algoritmalar</h2>
     <div class="container">
         <div class="accordion-container">
-            <button class="accordion">Dizide ki ikili toplamlar</button>
-            <div class="panel">
+            <button class="accordion">Dizideki ikili toplamlar</button>
+            <div class="panel" id="dit-div">
+                <form id="dit-form">
+                    <input name="dit" type="text" placeholder="Birbirinden Farklı Dizi Elemanlarını Giriniz...">
+                    <input name="dit-total" type="number" placeholder="Kaça eşit olanlar hesaplansın?">
+                    <button type="submit">Görüntüle</button>
+                </form>
             </div>
         </div>
     
         <div class="accordion-container">
             <button class="accordion">Fibonacci Serisi</button>
-            <div class="panel">
+            <div class="panel" id="fs-div">
+                <form id="fs-form">
+                    <input name="fs" type="number" placeholder="Kaç adet fibonacci sayısı görüntülemek istersiniz?">
+                    <button type="submit">Görüntüle</button>
+                </form>
             </div>
         </div>
     </div>
