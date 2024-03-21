@@ -1,3 +1,17 @@
+const accordion = document.querySelectorAll(".accordion");
+
+for (const acc of accordion) {
+    acc.addEventListener("click", function() {
+    this.classList.toggle("active");
+    let panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+  });
+}
+
 // Dizideki İkili Toplamlar:
 const array = [1,2,3,4,5,6,7,8,9,10];
 console.log(`Dizinin elemanları şunlardır: ${array}`);

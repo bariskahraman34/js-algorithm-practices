@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    margin-top: 200px;
+    text-align: center;
+}
+
+.container{
+    margin-top: 100px;
+    margin-inline: auto;
+    max-width: 1110px;
+}
+
+.accordion-container{
+    margin-bottom: 30px;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #ccc; 
+  }
+  
+  .panel {
+    border: 1px solid #000;
+    border-top:none;
+    padding: 30px 30px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+  }
