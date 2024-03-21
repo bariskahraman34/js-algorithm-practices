@@ -14,7 +14,7 @@ for (const acc of accordion) {
 }
 
 for (const form of forms) {
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', e => {
         e.preventDefault();
         const inputElement = document.querySelector(`#${e.target.id} input`);
         if(inputElement.name == "dit"){
@@ -24,44 +24,53 @@ for (const form of forms) {
         }
         
     })
-    
 }
 
 // Dizideki ikili toplamlar
 function sumPairs(){
-    const ditDiv = document.querySelector('#dit-div');
-    const ditTotal = document.querySelector('input[name="dit-total"]');
+    const resultDiv = document.querySelector('#dit-result-div');
+    resultDiv.innerHTML = "";
+    const ditTotalVal = document.querySelector('input[name="dit-total"]').value;
     const ditVal = document.querySelector('input[name="dit"]').value;
     let arr = ditVal.split(',');
+    if(arr.length == 0 || ditTotalVal == ""){
+        return resultDiv.innerHTML += `<p>Boş bırakmayınız.</p>`
+    }
     let trimmedArr = arr.map(s => s.trim());
+    if(trimmedArr.length % 2 != 0){
+        return resultDiv.innerHTML += `<p>Lütfen sayı uzunluğunu çift yapınız.</p>`
+    }
     for (let i = 0 ; i < trimmedArr.length ; i++) {
         for(let j = i+1 ; j < trimmedArr.length ; j++){
             if(Number(trimmedArr[i]) == Number(trimmedArr[j])){
-                return ditDiv.innerHTML += `<div class="result">Lütfen birbirinden farklı sayılar girin.</div>`
+                return resultDiv.innerHTML += `<p>Lütfen birbirinden farklı sayılar girin.</p>`
             }
         }
     }
-    ditDiv.innerHTML += `<h3>Dizinin elemanları şunlardır: ${trimmedArr.map(s => ` ${s} `)}</h3>`;
+    resultDiv.innerHTML += `<h3>Dizinin elemanları şunlardır: ${trimmedArr.map(s => ` ${s} `)}</h3>`;
+    let pairsArray = []; 
     for(let i = 0 ; i < trimmedArr.length ; i++){
         for(let j = 0 ; j < trimmedArr.length ; j++){
-            if( Number(trimmedArr[i]) + Number(trimmedArr[j]) == Number(ditTotal.value)){
-                ditDiv.innerHTML += `<div class="result">${trimmedArr[i]} + ${trimmedArr[j]} = ${Number(trimmedArr[i]) + Number(trimmedArr[j])} <br></div>`
+            if( Number(trimmedArr[i]) + Number(trimmedArr[j]) == Number(ditTotalVal)){
+                pairsArray.push([Number(trimmedArr[i]),Number(trimmedArr[j])]);
+                resultDiv.innerHTML += `<p>${trimmedArr[i]} + ${trimmedArr[j]} = ${Number(trimmedArr[i]) + Number(trimmedArr[j])}</p>`
             }
         }
     }
 }
 
 // Fibonacci Serisi:
-function fibSeries(val){
-    const fsDiv = document.querySelector('#fs-div');
+function fibSeries(){
+    const fsResultDiv = document.querySelector('#fs-result-div');
+    fsResultDiv.innerHTML = "";
     const fsVal = document.querySelector('input[name="fs"]').value;
     let fib = [];
     let num1 = 1;
     let num2 = 1;
-    fsDiv.innerHTML += `<h3>Fibonacci Toplamları : </h3>`
+    fsResultDiv.innerHTML += `<h3>Fibonacci Toplamları : </h3>`
     for(let i = 0 ; i < fsVal ; i++){
         let total = num1 + num2;
-        fsDiv.innerHTML += ` ${num1} + ${num2} = ${total} <br>`;
+        fsResultDiv.innerHTML += `<p>${num1} + ${num2} = ${total} </p>`;
         num1 = num2;
         num2 = total;
         fib.push(num1);
@@ -69,6 +78,6 @@ function fibSeries(val){
             fib.push(total);
         }
     }
-    fsDiv.innerHTML += `Fibonacci Serisi: ${fib.map(f => ` ${f} `)}`;
+    fsResultDiv.innerHTML += `<p>Fibonacci Serisi: ${fib.map(f => ` ${f} `)}</p>`;
 }
 
