@@ -18,11 +18,11 @@ for (const form of forms) {
         e.preventDefault();
         const inputElement = document.querySelector(`#${e.target.id} input`);
         if(inputElement.name == "dit"){
-            return sumPairs();
+            sumPairs();
         }else if(inputElement.name == "fs"){
-            return fibSeries();
+            fibSeries();
         }
-        
+        e.target.reset();
     })
 }
 
@@ -47,7 +47,10 @@ function sumPairs(){
             }
         }
     }
-    resultDiv.innerHTML += `<h3>Dizinin elemanları şunlardır: ${trimmedArr.map(s => ` ${s} `)}</h3>`;
+    resultDiv.innerHTML += `
+        <h3>Dizinin elemanları şunlardır: ${trimmedArr.map(s => ` ${s} `)}</h3>
+        <h3>Dizideki ikili elemanlarının toplanmasında istenilen sonuç: ${ditTotalVal}</h3>
+    `;
     let pairsArray = []; 
     for(let i = 0 ; i < trimmedArr.length ; i++){
         for(let j = 0 ; j < trimmedArr.length ; j++){
@@ -56,6 +59,9 @@ function sumPairs(){
                 resultDiv.innerHTML += `<p>${trimmedArr[i]} + ${trimmedArr[j]} = ${Number(trimmedArr[i]) + Number(trimmedArr[j])}</p>`
             }
         }
+    }
+    if(pairsArray.length == 0){
+        return resultDiv.innerHTML = "Girdiğiniz sonuca ulaşan ikili toplam bulunamamıştır."
     }
 }
 
