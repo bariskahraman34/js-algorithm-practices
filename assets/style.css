@@ -45,14 +45,9 @@ h2{
     border-bottom-right-radius: 10px;
     border-top:none;
     background-color: white;
-    overflow: hidden;
+    overflow :hidden;
     max-height: 0px;
-    transition: max-height 0.8s ease;
-  }
-  
-  .panel.active{
-    max-height: 1000px;
-    transition: max-height .3s ease;
+    transition: max-height 0.6s ease;
   }
 
   .elements-container{
@@ -120,5 +115,8 @@ h2{
     }
     .container{
       margin-block: 50px;
+    }
+    .elements-container{
+      padding: 10px;
     }
   }

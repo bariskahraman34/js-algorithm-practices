@@ -5,11 +5,6 @@ for (const acc of accordion) {
     acc.addEventListener("click", function() {
     this.classList.toggle("active");
     let panel = this.nextElementSibling;
-    if (panel.classList.contains('active')) {
-        panel.classList.remove('active');
-    } else {
-        panel.classList.add('active');
-    }
     if(this.classList.contains('active')){
         this.children[1].classList.remove('fa-circle-plus');
         this.children[1].classList.add('fa-circle-minus');
@@ -17,6 +12,7 @@ for (const acc of accordion) {
         this.children[1].classList.add('fa-circle-plus');
         this.children[1].classList.remove('fa-circle-minus'); 
     }
+    toggleAccordion(panel);
     
   });
 }
@@ -38,6 +34,22 @@ for (const form of forms) {
         }
         e.target.reset();
     })
+}
+
+function toggleAccordion(panel){
+    if (panel.dataset.isExpanded === "true") {
+        panel.style.maxHeight = "0px";
+        panel.dataset.isExpanded = "false";
+    } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.dataset.isExpanded = "true";
+    }
+}
+
+function activeAccordion(panel){
+    if(panel.dataset.isExpanded === "true"){
+        panel.style.maxHeight = panel.scrollHeight + "px";
+    }
 }
 
 // Dizideki ikili toplamlar
@@ -77,6 +89,8 @@ function sumPairs(){
     if(pairsArray.length == 0){
         return resultDiv.innerHTML = "Girdiğiniz sonuca ulaşan ikili toplam bulunamamıştır."
     }
+    const panel = document.querySelector('#dit-div');
+    activeAccordion(panel);
 }
 
 // Fibonacci Serisi:
@@ -99,6 +113,8 @@ function fibSeries(){
         }
     }
     fsResultDiv.innerHTML += `<p>Fibonacci Serisi: ${fib.map(f => ` ${f} `)}</p>`;
+    const panel = document.querySelector('#fs-div');
+    activeAccordion(panel);
 }
 
 // Dizide ki En Büyük 3 Sayıyı Bulma
@@ -131,6 +147,8 @@ function findBiggestThreeNumbers(){
     for(let i = 0 ; i < 3 ; i++){
         esResultDiv.innerHTML += `<span>${trimmedArr.pop()}</span>`
     }
+    const panel = document.querySelector('#es-div');
+    activeAccordion(panel);
 }
 
 // Ters Çevrilebilir Asal Sayılar
@@ -171,6 +189,8 @@ function reversiblePrimeNumbers(){
         <h3>Sonuç:</h3>
         ${uniquePairs.map(pair => `<p>${pair.join(' ile ')} ters çevrilebilir asal sayıdır.</p>`).join(' ')}
     `;
+    const panel = document.querySelector('#tas-div');
+    activeAccordion(panel);
 }
 
 // Palindrom Kontrolü
@@ -187,4 +207,6 @@ function isPalindrom(){
         }
     }
     pkResultDiv.innerHTML = `<p>"${pkVal}" palindromdur.</p>`;
+    const panel = document.querySelector('#pk-div');
+    activeAccordion(panel);
 }
