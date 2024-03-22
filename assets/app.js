@@ -98,6 +98,9 @@ function fibSeries(){
     const fsResultDiv = document.querySelector('#fs-result-div');
     fsResultDiv.innerHTML = "";
     const fsVal = document.querySelector('input[name="fs"]').value;
+    if( Number(fsVal) > 31 ){
+        return fsResultDiv.innerHTML = `<p> Maksimum 30 yazabilirsiniz. </p>`
+    }
     let fib = [];
     let num1 = 1;
     let num2 = 1;
