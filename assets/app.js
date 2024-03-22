@@ -5,11 +5,19 @@ for (const acc of accordion) {
     acc.addEventListener("click", function() {
     this.classList.toggle("active");
     let panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-        panel.style.display = "none";
+    if (panel.classList.contains('active')) {
+        panel.classList.remove('active');
     } else {
-        panel.style.display = "block";
+        panel.classList.add('active');
     }
+    if(this.classList.contains('active')){
+        this.children[1].classList.remove('fa-circle-plus');
+        this.children[1].classList.add('fa-circle-minus');
+    }else{
+        this.children[1].classList.add('fa-circle-plus');
+        this.children[1].classList.remove('fa-circle-minus'); 
+    }
+    
   });
 }
 

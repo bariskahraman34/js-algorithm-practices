@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/app.js" defer></script>
     <title>Algoritma</title>
@@ -11,60 +12,74 @@
     <h2>Javascript ile Algoritmalar</h2>
     <div class="container">
         <div class="accordion-container">
-            <button class="accordion">Dizideki ikili toplamlar</button>
+            <button class="accordion"><span>Dizideki ikili toplamlar</span><i class="fa-solid fa-circle-plus"></i></button>
             <div class="panel" id="dit-div">
-                <form id="dit-form">
-                    <input name="dit" type="text" placeholder="Birbirinden Farklı Dizi Elemanlarını Giriniz... Örn: 1,2,3,4,5,6">
-                    <input class="type-number" name="dit-total" type="number" placeholder="Kaça eşit olanlar hesaplansın? Örn: 5">
-                    <button type="submit">Görüntüle</button>
-                </form>
-                <div class="result" id="dit-result-div"></div>
+                <div class="elements-container">
+                    <form id="dit-form">
+                        <label for="dit">Birbirinden Farklı Dizi Elemanlarını Giriniz...</label>
+                        <input name="dit" id="dit" type="text" placeholder="Örn: 1,2,3,4,5,6">
+                        <label for="dit-total">Kaça eşit olanlar hesaplansın?</label>
+                        <input class="type-number" id="dit-total" name="dit-total" type="number" placeholder="Örn: 5">
+                        <button type="submit">Görüntüle</button>
+                    </form>
+                    <div class="result" id="dit-result-div"></div>
+                </div>
             </div>
         </div>
     
         <div class="accordion-container">
-            <button class="accordion">Fibonacci Serisi</button>
+            <button class="accordion"><span>Fibonacci Serisi</span><i class="fa-solid fa-circle-plus"></i></button>
             <div class="panel" id="fs-div">
-                <form id="fs-form">
-                    <input class="type-number" name="fs" type="number" min="1" placeholder="Kaç elemanlı Fibonacci sayı dizisi görüntülemek istersiniz?">
-                    <button type="submit">Görüntüle</button>
-                </form>
-                <div class="result" id="fs-result-div"></div>
+                <div class="elements-container">
+                    <form id="fs-form">
+                        <label for="fs">Kaç elemanlı Fibonacci sayı dizisi görüntülemek istersiniz?</label>
+                        <input class="type-number" id="fs" name="fs" type="number" min="1" placeholder="Sayı Giriniz...">
+                        <button type="submit">Görüntüle</button>
+                    </form>
+                    <div class="result" id="fs-result-div"></div>
+                </div>
             </div>
         </div>
 
         <div class="accordion-container">
-            <button class="accordion">Dizideki En Büyük Üç Sayıyı Bul</button>
+            <button class="accordion"><span>Dizideki En Büyük Üç Sayıyı Bul</span><i class="fa-solid fa-circle-plus"></i></button>
             <div class="panel" id="es-div">
-                <form id="es-form">
-                    <input name="es" type="text" placeholder="Birbirinden Farklı Dizi Elemanlarını Giriniz... Örn: 1,2,3,4,5,6">
-                    <button type="submit">Görüntüle</button>
-                </form>
-                <div class="result" id="es-result-div"></div>
+                <div class="elements-container">
+                    <form id="es-form">
+                        <label for="es">Birbirinden Farklı Dizi Elemanlarını Giriniz</label>
+                        <input name="es" id="es" type="text" placeholder="Örn: 1,2,3,4,5,6">
+                        <button type="submit">Görüntüle</button>
+                    </form>
+                    <div class="result" id="es-result-div"></div>
+                </div>
             </div>
         </div>
 
         <div class="accordion-container">
-            <button class="accordion">Ters Çevrilebilir Asal Sayılar</button>
+            <button class="accordion"><span>Ters Çevrilebilir Asal Sayılar</span><i class="fa-solid fa-circle-plus"></i></button>
             <div class="panel" id="tas-div">
-                <p style="margin-bottom: 10px; font-size: 20px;">12 ile seçeceğiniz sayı arasında olan tüm ters çevrilebilir asal sayıları görmek için bir sayı giriniz.</p>
-                <form id="tas-form">
-                    <input class="type-number" name="tas" type="number" min="12" placeholder="Sayı giriniz...">
-                    <button type="submit">Görüntüle</button>
-                </form>
-                <div class="result" id="tas-result-div"></div>
+                <div class="elements-container">
+                    <form id="tas-form">
+                        <label for="tas">12 ile seçeceğiniz sayı arasında olan tüm ters çevrilebilir asal sayıları görmek için bir sayı giriniz.</label>
+                        <input class="type-number" name="tas" id="tas" type="number" min="12" placeholder="Sayı giriniz...">
+                        <button type="submit">Görüntüle</button>
+                    </form>
+                    <div class="result" id="tas-result-div"></div>
+                </div>
             </div>
         </div>
 
         <div class="accordion-container">
-            <button class="accordion">Palindrom Kontrolü</button>
+            <button class="accordion"><span>Palindrom Kontrolü</span><i class="fa-solid fa-circle-plus"></i></button>
             <div class="panel" id="pk-div">
-                <p style="margin-bottom: 10px; font-size: 20px;">Palindrom, tersten okunduğunda aynı olan kelime, cümle veya sayıdır.</p>
-                <form id="pk-form">
-                    <input name="pk" type="text" min="12" placeholder="Metin Giriniz...">
-                    <button type="submit">Görüntüle</button>
-                </form>
-                <div class="result" id="pk-result-div"></div>
+                <div class="elements-container">
+                    <form id="pk-form">
+                        <label for="pk">Palindrom, tersten okunduğunda aynı olan kelime, cümle veya sayıdır.</label>
+                        <input name="pk" id="pk" type="text" min="12" placeholder="Metin Giriniz...">
+                        <button type="submit">Görüntüle</button>
+                    </form>
+                    <div class="result" id="pk-result-div"></div>
+                </div>
             </div>
         </div>
     </div>
