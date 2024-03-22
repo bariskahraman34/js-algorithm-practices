@@ -25,6 +25,8 @@ for (const form of forms) {
             findBiggestThreeNumbers();
         }else if(inputElement.name == "tas"){
             reversiblePrimeNumbers();
+        }else if(inputElement.name == "pk"){
+            isPalindrom();
         }
         e.target.reset();
     })
@@ -161,4 +163,20 @@ function reversiblePrimeNumbers(){
         <h3>Sonuç:</h3>
         ${uniquePairs.map(pair => `<p>${pair.join(' ile ')} ters çevrilebilir asal sayıdır.</p>`).join(' ')}
     `;
+}
+
+// Palindrom Kontrolü
+function isPalindrom(){
+    const pkResultDiv = document.querySelector('#pk-result-div');
+    pkResultDiv.innerHTML = "";
+    const pkVal = document.querySelector('input[name="pk"]').value;
+    console.log(pkVal);
+    let arr = pkVal.replaceAll(' ','');
+    for(let i = 0 ; i < arr.length ; i++){
+        if(arr[i] !== arr[arr.length - 1 - i]){
+            pkResultDiv.innerHTML = `<p>"${pkVal}" palindrom değildir.</p>`;
+            return
+        }
+    }
+    pkResultDiv.innerHTML = `<p>"${pkVal}" palindromdur.</p>`;
 }
