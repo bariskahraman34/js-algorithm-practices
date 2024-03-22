@@ -72,8 +72,8 @@ h2{
     background-color: #70767c;
   }
 
-  input:not([name="fs"])::-webkit-outer-spin-button,
-  input:not([name="fs"])::-webkit-inner-spin-button{
+  input:not(.type-number)::-webkit-outer-spin-button,
+  input:not(.type-number)::-webkit-inner-spin-button{
     -webkit-appearance: none;
   }
 

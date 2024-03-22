@@ -23,6 +23,8 @@ for (const form of forms) {
             fibSeries();
         }else if(inputElement.name == "es"){
             findBiggestThreeNumbers();
+        }else if(inputElement.name == "tas"){
+            reversiblePrimeNumbers();
         }
         e.target.reset();
     })
@@ -119,4 +121,44 @@ function findBiggestThreeNumbers(){
     for(let i = 0 ; i < 3 ; i++){
         esResultDiv.innerHTML += `<span>${trimmedArr.pop()}</span>`
     }
+}
+
+// Ters Çevrilebilir Asal Sayılar
+
+function reversiblePrimeNumbers(){
+    const tasResultDiv = document.querySelector('#tas-result-div');
+    tasResultDiv.innerHTML = "";
+    const tasVal = Number(document.querySelector('input[name="tas"]').value);
+    let primeNumbers = [];
+    let uniquePairs = [];
+    for(let i = 12 ; i < tasVal ; i++){
+        let reversedNumber = Number(i.toString().split('').reverse().join(''));
+        let smallNumber = reversedNumber;
+        if(i < reversedNumber){
+            smallNumber = i;
+        }
+        let counter = 0;
+        if(i % 10 !== 0){
+            for(let j = 2 ; j < Math.ceil(smallNumber / 2) ; j++){
+                if(reversedNumber % j == 0 || i % j == 0 ){
+                    counter++;
+                }
+            }
+            if(counter == 0){
+                primeNumbers.push([i , reversedNumber]);
+            }
+        }
+    }
+
+    primeNumbers.forEach(pair => {
+        let reversePair = [pair[1] , pair[0]];
+        if(!uniquePairs.some(existingPair => existingPair[0]=== reversePair[0] && existingPair[1] === reversePair[1])){
+            uniquePairs.push(pair);
+        }
+    })
+    tasResultDiv.innerHTML += `
+        <h3>Girilen değer: ${tasVal}</h3>
+        <h3>Sonuç:</h3>
+        ${uniquePairs.map(pair => `<p>${pair.join(' ile ')} ters çevrilebilir asal sayıdır.</p>`).join(' ')}
+    `;
 }
